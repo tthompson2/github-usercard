@@ -2,17 +2,49 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
+axios
+   .get('https://api.github.com/users/tthompson2')
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
 
    Skip to Step 3.
 */
+  .then(response => {
+
+    response.data.forEach(item => {
+
+      let entry = createGithubCard(item);
+      domElement.appendChild(entry)
+
+    });
+
+  })
+
+  .catch (error => {
+
+    console.log("Error:", err);
+
+  });
 
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
+
+function createGithubCard(followersArray) {
+
+  const cardDivCreator = document.createElement('div');
+  const imgCreator = document.createElement('img');
+  const cardInfoDiv = document.createElement('div');
+  const h3Creator = document.createElement('h3');
+  const usernameCreator = document.createElement('p');
+  const locationCreator = document.createElement('p');
+  const linkCreator = document.createElement('a');
+  const followerCreator = document.createElement('p');
+  const followingCreator = document.createElement('p');
+  const bioCreator = document.createElement('p');
+
+}
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
